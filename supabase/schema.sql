@@ -18,6 +18,7 @@ create table if not exists public.orders (
   customer_name text not null,
   customer_phone text not null,
   notification_mode text not null default 'owner_to_client' check (notification_mode in ('client_to_owner','owner_to_client')),
+  items_text text not null default '',
   total numeric(10,2) not null default 0,
   status text not null default 'registered',
   notification_status text not null default 'pending',
@@ -49,6 +50,8 @@ create table if not exists public.notification_jobs (
   sent_at timestamptz
 );
 
+alter table public.orders add column if not exists items_text text not null default '';
+
 alter table public.products enable row level security;
 alter table public.orders enable row level security;
 alter table public.order_items enable row level security;
@@ -57,4 +60,14 @@ alter table public.notification_jobs enable row level security;
 -- Protótipo: catálogo público somente leitura.
 drop policy if exists "public can read available products" on public.products;
 create policy "public can read available products" on public.products for select to anon, authenticated using (available = true);
--- Pedidos e jobs devem ser gravados apenas por Edge Function/n8n com chave de servidor.
+
+-- Permissões temporárias para o protótipo: o checkout público pode criar o pedido e seus itens.
+drop policy if exists "public can create orders" on public.orders;
+create policy "public can create orders" on public.orders for insert to anon, authenticated
+  with check (customer_name <> '' and customer_phone <> '' and total >= 0);
+
+drop policy if exists "public can create order items" on public.order_items;
+create policy "public can create order items" on public.order_items for insert to anon, authenticated
+  with check (quantity > 0 and unit_price >= 0);
+
+-- notification_jobs permanece protegido: será criado pelo n8n/Edge Function.
