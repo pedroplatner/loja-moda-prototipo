@@ -55,5 +55,6 @@ alter table public.order_items enable row level security;
 alter table public.notification_jobs enable row level security;
 
 -- Protótipo: catálogo público somente leitura.
+drop policy if exists "public can read available products" on public.products;
 create policy "public can read available products" on public.products for select to anon, authenticated using (available = true);
 -- Pedidos e jobs devem ser gravados apenas por Edge Function/n8n com chave de servidor.
