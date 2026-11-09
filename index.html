@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="product-detail.css" />
+  <link rel="stylesheet" href="checkout-extra.css" />
 </head>
 <body>
   <div class="announcement">frete grátis nas compras acima de R$ 299 <span>•</span> atendimento personalizado pelo WhatsApp</div>
@@ -40,7 +41,7 @@
   <aside class="drawer" id="cart-drawer" aria-hidden="true"><div class="drawer-head"><h2>Sua sacola <span id="drawer-count">(0)</span></h2><button id="close-cart" class="close">×</button></div><div id="cart-items" class="cart-items"></div><div class="cart-footer"><div class="total-row"><span>Total</span><strong id="cart-total">R$ 0,00</strong></div><button id="checkout-button" class="primary-button full">Finalizar pedido <span>↗</span></button><small>Você será direcionada para confirmar pelo WhatsApp.</small></div></aside>
   <div class="overlay" id="overlay"></div>
 
-  <div class="modal" id="checkout-modal" aria-hidden="true"><div class="modal-card"><button class="close" id="close-checkout">×</button><p class="eyebrow">quase lá</p><h2>Como podemos te encontrar?</h2><p class="modal-intro">Registraremos seu pedido e enviaremos a confirmação pelo WhatsApp.</p><form id="checkout-form"><label>Seu nome<input name="name" required placeholder="Como você gosta de ser chamada?" /></label><label>WhatsApp<input name="phone" required inputmode="tel" placeholder="(11) 99999-9999" /></label><label class="check"><input type="checkbox" name="consent" required /> Aceito receber atualizações deste pedido pelo WhatsApp.</label><button class="primary-button full" type="submit">Registrar pedido <span>↗</span></button></form></div></div>
+  <div class="modal" id="checkout-modal" aria-hidden="true"><div class="modal-card"><button class="close" id="close-checkout">×</button><p class="eyebrow">quase lá</p><h2>Como podemos te encontrar?</h2><p class="modal-intro">Registraremos seu pedido e enviaremos a confirmação pelo WhatsApp.</p><form id="checkout-form"><label>Seu nome<input name="name" required placeholder="Como você gosta de ser chamada?" /></label><label>WhatsApp<input name="phone" required inputmode="tel" placeholder="(11) 99999-9999" /></label><label>Modo de teste<select name="notification_mode"><option value="client_to_owner">1 — eu mando a mensagem para a dona</option><option value="owner_to_client">2 — a dona manda a mensagem para mim</option></select></label><label class="check"><input type="checkbox" name="consent" required /> Aceito receber atualizações deste pedido pelo WhatsApp.</label><button class="primary-button full" type="submit">Registrar pedido <span>↗</span></button></form></div></div>
 
   <div class="product-modal" id="product-modal" aria-hidden="true"><div class="product-modal-card"><button class="close product-close" id="close-product">×</button><div id="product-detail"></div></div></div>
 
