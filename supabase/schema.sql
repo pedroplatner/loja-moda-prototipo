@@ -66,6 +66,10 @@ drop policy if exists "admin can manage products prototype" on public.products;
 create policy "admin can manage products prototype" on public.products
 for all to anon, authenticated using (true) with check (true);
 
+-- Operações do painel administrativo no protótipo.
+grant select, update, delete on public.orders to anon, authenticated;
+grant select, update, delete on public.order_items to anon, authenticated;
+
 -- Permissões temporárias para o protótipo: o checkout público pode criar o pedido e seus itens.
 drop policy if exists "public can create orders" on public.orders;
 create policy "public can create orders" on public.orders for insert to anon, authenticated
