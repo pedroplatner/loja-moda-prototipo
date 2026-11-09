@@ -61,6 +61,11 @@ alter table public.notification_jobs enable row level security;
 drop policy if exists "public can read available products" on public.products;
 create policy "public can read available products" on public.products for select to anon, authenticated using (available = true);
 
+-- Protótipo: painel administrativo sem login. Substituir por autenticação antes da produção.
+drop policy if exists "admin can manage products prototype" on public.products;
+create policy "admin can manage products prototype" on public.products
+for all to anon, authenticated using (true) with check (true);
+
 -- Permissões temporárias para o protótipo: o checkout público pode criar o pedido e seus itens.
 drop policy if exists "public can create orders" on public.orders;
 create policy "public can create orders" on public.orders for insert to anon, authenticated
