@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ateliê Nuvem — coleção essencial</title>
+  <meta name="description" content="Protótipo de catálogo e pedidos pelo WhatsApp para uma loja de moda." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="product-detail.css" />
+</head>
+<body>
+  <div class="announcement">frete grátis nas compras acima de R$ 299 <span>•</span> atendimento personalizado pelo WhatsApp</div>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Ateliê Nuvem início"><span>ATELIÊ</span> NUVEM</a>
+    <nav><a href="#colecao">Coleção</a><a href="#sobre">Nossa essência</a><a href="#duvidas">Dúvidas</a></nav>
+    <button class="cart-button" id="open-cart" aria-label="Abrir carrinho"><span class="bag-icon">⌑</span><span class="cart-label">Sacola</span><b id="cart-count">0</b></button>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy"><p class="eyebrow">coleção primavera · 2026</p><h1>Peças que contam<br><em>quem você é.</em></h1><p class="hero-text">Uma curadoria leve, atemporal e feita para acompanhar os seus dias.</p><a class="primary-button" href="#colecao">Explorar coleção <span>↗</span></a></div>
+      <div class="hero-image"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=85" alt="Mulher escolhendo roupas em uma loja" /><div class="hero-stamp">feito para<br><strong>ser seu</strong></div></div>
+    </section>
+
+    <section class="collection" id="colecao">
+      <div class="section-heading"><div><p class="eyebrow">curadoria da semana</p><h2>Favoritos da estação</h2></div><button class="text-button" id="show-all">ver todos <span>→</span></button></div>
+      <div class="filters"><button class="filter active" data-filter="all">Todos</button><button class="filter" data-filter="vestidos">Vestidos</button><button class="filter" data-filter="conjuntos">Conjuntos</button><button class="filter" data-filter="essenciais">Essenciais</button></div>
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <section class="manifesto" id="sobre"><div class="manifesto-image"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=85" alt="Pessoa usando look em tons neutros" /></div><div class="manifesto-copy"><p class="eyebrow">nossa essência</p><h2>Menos excesso.<br><em>Mais você.</em></h2><p>Acreditamos em roupas que atravessam temporadas, valorizam o corpo e cabem na vida real. Cada peça é escolhida com cuidado para você se sentir bem hoje — e por muito tempo.</p><a class="text-button" href="#duvidas">conheça o ateliê <span>→</span></a></div></section>
+    <section class="faq" id="duvidas"><p class="eyebrow">estamos aqui para ajudar</p><h2>Ficou com alguma dúvida?</h2><p>Chame a gente no WhatsApp. Respondemos sobre medidas, disponibilidade e entrega.</p><a class="whatsapp-link" href="https://wa.me/5511999999999" target="_blank" rel="noreferrer">falar pelo WhatsApp ↗</a></section>
+  </main>
+
+  <footer><div class="brand"><span>ATELIÊ</span> NUVEM</div><p>© 2026 Ateliê Nuvem · feito com intenção</p><button id="admin-toggle" class="admin-link">Área da loja</button></footer>
+
+  <aside class="drawer" id="cart-drawer" aria-hidden="true"><div class="drawer-head"><h2>Sua sacola <span id="drawer-count">(0)</span></h2><button id="close-cart" class="close">×</button></div><div id="cart-items" class="cart-items"></div><div class="cart-footer"><div class="total-row"><span>Total</span><strong id="cart-total">R$ 0,00</strong></div><button id="checkout-button" class="primary-button full">Finalizar pedido <span>↗</span></button><small>Você será direcionada para confirmar pelo WhatsApp.</small></div></aside>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="modal" id="checkout-modal" aria-hidden="true"><div class="modal-card"><button class="close" id="close-checkout">×</button><p class="eyebrow">quase lá</p><h2>Como podemos te encontrar?</h2><p class="modal-intro">Registraremos seu pedido e enviaremos a confirmação pelo WhatsApp.</p><form id="checkout-form"><label>Seu nome<input name="name" required placeholder="Como você gosta de ser chamada?" /></label><label>WhatsApp<input name="phone" required inputmode="tel" placeholder="(11) 99999-9999" /></label><label class="check"><input type="checkbox" name="consent" required /> Aceito receber atualizações deste pedido pelo WhatsApp.</label><button class="primary-button full" type="submit">Registrar pedido <span>↗</span></button></form></div></div>
+
+  <div class="product-modal" id="product-modal" aria-hidden="true"><div class="product-modal-card"><button class="close product-close" id="close-product">×</button><div id="product-detail"></div></div></div>
+
+  <aside class="admin-panel" id="admin-panel" aria-hidden="true"><div class="drawer-head"><div><p class="eyebrow">área da loja</p><h2>Pedidos recentes</h2></div><button id="close-admin" class="close">×</button></div><div class="admin-note">Protótipo em modo demonstração · conectado ao Supabase na próxima etapa.</div><div id="orders-list" class="orders-list"></div></aside>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
